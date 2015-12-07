@@ -143,14 +143,15 @@ class UsuarioDA extends BaseDA{
 		try{ $db->query($sql); return true; } catch (PDOException $e) {	return false; }
 	}
 
-	function borrar($Usuario){
+	function borrar($Usuario = false){
 		$tbl = $this->_table_name;$db = $this->db;
-
-		if($Usuario->id == null){return false;}
-
-		$pkCol[] = $this->whrQry( "id" , $Usuario->id );
-
-		$sql = "DELETE FROM $tbl WHERE ".implode(' AND ',$pkCol);//echo $sql."\n";
+		$sql = "DELETE FROM $tbl";
+		if($Usuario){
+			if($Usuario->id == null){return false;}
+			$pkCol[] = $this->whrQry( "id" , $Usuario->id );
+			$sql .= " WHERE ".implode(' AND ',$pkCol);
+		}
+		//echo $sql."\n";
 		try{ $db->query($sql); return true; } catch (PDOException $e) {	return false; }
 	}
 

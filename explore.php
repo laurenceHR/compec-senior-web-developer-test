@@ -5,7 +5,7 @@
  */
 
 $_DWALR_US = 'DWALR/db/US/';
-$_DWALR_DA = 'DWALR/db/DA/sqlite/';
+$_DWALR_DA = 'DWALR/db/DA/pdo/';
 $_DWALR_DO = 'DWALR/db/DO/';
 
 require $_DWALR_US.'Usuario.US.class.php';
@@ -17,11 +17,11 @@ try {
     //$UsuarioDA = new UsuarioDA();
     //$Usuarios = $UsuarioDA->listar();
     $UsuarioUS = new UsuarioUS();
-    $Usuarios = $UsuarioUS->listar();
-    print_r($Usuarios);
+    //$Usuarios = $UsuarioUS->listar();
+    //print_r($Usuarios);
     //$Usuario = $UsuarioUS->seleccionar(1);    
     //print_r($Usuario);
-    $Usuario = new UsuarioDO;
+    //$Usuario = new UsuarioDO;
     //$Usuario->id = 1;
     //$UsuarioUS->borrar($Usuario);
     //$Usuario->id = 2;
@@ -32,6 +32,9 @@ try {
     //$Usuario->cellphone = '941465757';
     //$Usuario->avatar = 'blank.jpg';
     //$UsuarioUS->actualizar($Usuario);
+    $UsuarioLista = $UsuarioUS->leerTxt('users.csv','|','-');
+    print_r($UsuarioLista); 
+    //$UsuarioUS->truncate();
     
 } catch (PDOException $e) {
     print "¡Error!: " . $e->getMessage() . "<br/>";

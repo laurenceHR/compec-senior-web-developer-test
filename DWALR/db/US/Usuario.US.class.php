@@ -73,6 +73,7 @@ class UsuarioUS{
 				//print_r($h);exit;
 			}else{
 				$arr = explode($sep,$linea);
+				if(count($arr)==1) continue;
 				$vars = [];
 				foreach($arr as $i => $v){	
 					$arr2 = explode($sep2,$v);

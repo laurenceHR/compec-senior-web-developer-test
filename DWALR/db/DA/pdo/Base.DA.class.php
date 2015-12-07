@@ -25,7 +25,8 @@ class BaseDA{
 		if($txt == 'NULL'){return $txt;}
 		if($txt == 'NOT NULL'){return $txt;}
 		if($txt == 'SYSDATE()'){return $txt;}
-		return "'".$txt."'";
+		return '"'. $txt . '"';
+		//return "'".$txt."'";
 	}
 
 	// Function whrQry : Where Query

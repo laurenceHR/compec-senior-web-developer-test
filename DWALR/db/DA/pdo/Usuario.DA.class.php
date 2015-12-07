@@ -77,7 +77,7 @@ class UsuarioDA extends BaseDA{
 			$insCol[] = "avatar"; 	$insVal[] = $this->mkVal($Usuario->avatar);
 		}
 
-		$sql = "INSERT INTO ".$tbl." (".implode(',',$insCol).") VALUES (".implode(',',$insVal).")";
+		$sql = "INSERT INTO ".$tbl." (".implode(',',$insCol).") VALUES (".implode(',',$insVal).")"; // echo $sql;
 		try{ $db->query($sql); return true; } catch (PDOException $e) {	return false; }
 	}
 

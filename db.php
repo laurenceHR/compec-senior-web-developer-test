@@ -4,7 +4,7 @@
  *
  * @var PDO $db
  */
-$db = new PDO('sqlite:database.sqlite');
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$DB = new PDO('sqlite:database.sqlite');
+$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-return $db;
+//return $DB;

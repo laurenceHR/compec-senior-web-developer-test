@@ -11,16 +11,12 @@
     table .header-fixed {
       position: fixed;
       top: 0px;
-      z-index: 1020; /* 10 less than .navbar-fixed to prevent any overlap */
-      border-bottom: 1px solid #d5d5d5;
-      -webkit-border-radius: 0;
-         -moz-border-radius: 0;
-              border-radius: 0;
-      -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
-         -moz-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
-              box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
-      filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); /* IE6-9 */
+      z-index: 1020;
+      border-bottom: 1px solid #d5d5d5;      
     } 
+    table tbody td img{
+        cursor: zoom-in;
+    }
     </style> 
 </head>
 <body>
@@ -440,8 +436,28 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal-avatar">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Avatar</h4>
+          </div>
+          <div class="modal-body text-center">
+            <img class="modal-avatar-img" src="">
+          </div>
+          <!--
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>            
+          </div>
+          -->
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </div>
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="bootstrap.min.js"></script>
     <script>
     
     $.fn.fixedHeader = function (options) 
@@ -500,6 +516,11 @@
     };
     $(function(){
         $('.table-fixed-header').fixedHeader();
+        $('tbody td img').click(function(){
+            var src = $(this).attr('src');
+            $('.modal-avatar-img').attr('src',src);
+            $('#modal-avatar').modal('show');
+        });
     });
     </script>
 </body>
